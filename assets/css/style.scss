@@ -1,0 +1,69 @@
+// Variables
+
+$question-style: purple;
+$answer-style: #844cb9;
+$container-style: #494c7d;
+$border-dark: 	#5c9a95;
+$border-light: #fffee2;
+$font-header: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ 
+body {
+    font-family: $font-header;
+}
+
+.test {
+    display: flexbox;
+    width: 90%vh;
+    height: 90%vh;
+    background: $border-light;
+    justify-content: center;
+    margin: 1em;
+    padding:1em;
+
+}
+
+.headerBar {
+    display: flex;
+    width: 100%rem;
+    background-color: $container-style;
+    color: $border-light;
+    font-family: $font-header;
+
+
+    .score {
+        p {
+            display: flex;
+            flex-direction: column;
+            float: left;
+            padding: 10px;
+            background-color: $answer-style;
+        }
+    }
+
+    .timer {
+        p {
+            display: flex;
+            flex-direction: column;
+            float: right;
+            padding: 10px;
+            background-color: $border-dark;
+            
+        }
+    }
+
+}
+
+.question {
+    h2 {
+        text-align: left;
+    }
+    p{
+        color: $answer-style;
+    }
+
+}
+
+#startTestBtn {
+    width: 80px;
+    height: 30px;
+}

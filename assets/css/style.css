@@ -1,5 +1,65 @@
-* {
-    margin:0;
-    padding:0;
-    
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.test {
+  display: flexbox;
+  width: 90%vh;
+  height: 90%vh;
+  background: #fffee2;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+  padding: 1em;
+}
+
+.headerBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%rem;
+  background-color: #494c7d;
+  color: #fffee2;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.headerBar .score p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: left;
+  padding: 10px;
+  background-color: #844cb9;
+}
+
+.headerBar .timer p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: right;
+  padding: 10px;
+  background-color: #5c9a95;
+}
+
+.question h2 {
+  text-align: left;
+}
+
+.question p {
+  color: #844cb9;
+}
+
+#startTestBtn {
+  width: 80px;
+  height: 30px;
+}
+/*# sourceMappingURL=style.css.map */

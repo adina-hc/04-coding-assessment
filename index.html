@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>JavaScript Assessment (Quiz)</title>
 </head>
     <body>
+<section class="test">
         <!-- Bar that holds the timer and high score -->
-        <section class="headerBar"></section>
-            <div id="score">Score
-                <img src="" alt="score image, if correct tickmark if incorrect, cross">
+        <section class="headerBar">
+            <div id="score" class="score">
+                <p>Score</p>
+         <!--       <img src="" alt="score image, if correct tickmark if incorrect, cross"> -->
             </div>
-            <div id="timer">Timer
-                
+            <div id="timer" class="timer">
+                <p>Timer</p>
+                <div id="timerBar">
+
+                </div>
+                <div id="progress" class="pgrs">
+
+                </div>  
             </div>
+        </section>
         <!-- Assessment container that holds questions and answers -->
-        <section id="assessment">Assessment container   
-            <h1> JavaScript Assessment </h1>
-            <section id="question">
+        <section id="startAssessment" class="startAssessment">
+            <h1> Welcome to your JavaScript Assessment</h1>
+            <p>You have 3 minutes to complete the test. For each incorrect answer, you will be penalized with 10 seconds from the timer. Enjoy!
+            </p>
+            <button id="startTestBtn">Start</button>
+        </section>
+
+        <section id="assessment" style="display: none;"> 
+            <h2> JavaScript Assessment </h2>
+            <section id="question" class="question">
                 <h2>Answer the following question</h2>
                 <p> Question </p>
             </section>
@@ -30,11 +47,12 @@
                 <div class="answer3" id="3.">3</div>
             </section>
         </section>
-            <section class="initials">
+            <section class="initials" style="display: none;">
             <h3>Initials</h3>
             <input class="initials" type="text">
-            <button>Submit</button>
+            <button id="submitInitials">Submit</button>
         </section>
+</section>
         <script src="./assets/js/script.js"></script>
     </body>
 </html>
