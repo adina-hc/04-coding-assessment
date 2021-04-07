@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>JavaScript Assessment (Quiz)</title>
+</head>
+
+<body>
+    <!-- Score section -->
+    <header class="topBar">
+        <section id="score" class="score leftCorner">
+            Score
+            <div class="score">
+                0
+            </div>
+        </section>
+        <!-- Timer section -->
+        <section class="timer  rightCorner">
+            Timer
+            <div id="timeCounter" class="counterTime">
+                180
+            </div>
+            <!-- Timer bar -->
+            <div id="timerBar" width="200">
+            </div>
+            <!-- progress bar -->
+            <div id="progBar" class="pgrs">
+            </div>
+        </section>
+    </header>
+    <!-- Assessment container that holds questions and answers -->
+    <main class="test">
+        <section id="startAssessment" class="startAssessment">
+            <h1> Welcome to your JavaScript Assessment</h1>
+            <article class="instructions">
+                <ul>
+                    <li>You have <span>3 minutes</span> to complete the test.</li>
+                    <li>When you select the answer it will automatically provide result and go to the next question</li>
+                    <li>For correct answers you will add points to your score</li>
+                    <li>For each incorrect answer, you will be penalized with 10 seconds from the timer.</li>
+                    <li>When you run out of time, the test will stop</li>
+                    <p>Enjoy!</p>
+                </ul>
+            </article>
+            <button id="startBtn">Start Test</button>
+            <button id="quitBtn">Quit Test</button>
+        </section>
+
+        <section id="assessment">
+            <h2> JavaScript Assessment </h2>
+            <section id="questions" class="question">
+                <h2>Answer the following question</h2>
+                <p id="questionItem"> Question </p>
+            </section>
+            <section class="answers">
+                <h2> Pick an answer </h2>
+                <button id="A" class="answerA">A</button>
+                <button id="B" class="answerB">B</button>
+                <button id="C" class="answerC">C</button>
+            </section>
+        </section>
+    <!-- Initials Submission Section -->    
+        <section id="initials" class="initials">
+            <form id=#initials>Initials
+                <input class="initials" type="text">
+                <button id="submitInitials">Submit</button>
+            </form>
+        </section>
+    <!-- Exit Test Section -->
+        <section id="exitTest" class="exitTest">
+            <article class="exit">
+                Thank you for participating, if you want to take the test, go back.
+                <button id="goBack">Back</button>
+            </article>
+        </section>
+    </main>
+ 
+</body>
+
+</html>
