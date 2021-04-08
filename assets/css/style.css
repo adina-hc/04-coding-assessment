@@ -85,7 +85,7 @@ span {
   height: 50px;
 }
 
-#a, #b, #c {
+.option {
   display: list-item;
   background-color: #844cb9;
   color: #fffee2;

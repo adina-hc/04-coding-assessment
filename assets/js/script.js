@@ -8,88 +8,95 @@ var quitTest = document.getElementById("quitBtn");
 
 var question = document.getElementById("questions");
 
-var answerA = document.getElementById("A");
-var answerB = document.getElementById("B");
-var answerC = document.getElementById("C");
+var optionA = document.getElementById("A");
+var optionB = document.getElementById("B");
+var optionC = document.getElementById("C");
 
 var startAssessment = document.querySelector("#startAssessment");
 var instructions = document.querySelector(".instructions");
 var start = document.getElementById("startTestBtn");
 
 var initials = document.getElementById("initials");
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+var maxListHighScores = 10;
 
 // 1. Variable declaration
 var testScore= 0;
 var testTime = 180;
 var counter = 0;
 
-// Start Test
+// 0. Start Test
 function startTest() {
-    currentQ = 0;
+    currentQuestion = 0;
     countdown();
     document.querySelector("#assessment").setAttribute("style", "display: block;");
     document.querySelector("#startAssessment").setAttribute("style", "display: none;");
     populateQuestions();
-
 }
 
-// 2. Questionnaire and variables defined for the questions
-var currentQ = 0; // current question
+// 2. Questions variables / array
+var currentQuestion = 0; // current question
 var questions = [
     {
-        question: "1. what are the different data types present in javascript",
-        answerA: "var str = 'Hello'; this is a string",
-        answerB: "var x = 10; ",
-        answerC: "string, number, boolean",
+        question: "1. What are the different data types present in javascript",
+        optionA: "a. var str = 'Hello'; this is a string",
+        optionB: "b. var x = 10; ",
+        optionC: "c. string, number, boolean",
         correctAnswer: "string, number, boolean"
     },
-
     {
         question: "2. Hoisting in javascript is?",
-        answerA: "JavaScript's default behavior of moving declarations to the top of the scope",
-        answerB: "Hoisting is the initialization of a variable",
-        answerC: "None of the above",
+        optionA: "a. JavaScript's default behavior of moving declarations to the top of the scope",
+        optionB: "b. Hoisting is the initialization of a variable",
+        optionC: "c. None of the above",
         correctAnswer: "JavaScript's default behavior of moving declarations to the top of the scope"
     },
-
     {
         question: "3. What is implicit type coercion in javascript?",
-        answerA: "The strict equality operator === triggers implicit type coercion",
-        answerB: "Javascript attemps to coerce an unexpected value type to the expected type",
-        answerC: "Both answers are correct",
+        optionA: "a. The strict equality operator === triggers implicit type coercion",
+        optionB: "b. Javascript attemps to coerce an unexpected value type to the expected type",
+        optionC: "c. Both answers are correct",
         correctAnswer: "Javascript attemps to coerce an unexpected value type to the expected type",
     },
-
     {
         question: "4. What is an Immediately Invoked Function Expression (IIFE)?",
-        answerA: "JavaScript function that runs as soon as it is defined",
-        answerB: "IT is a simple way to isolate variable declarations",
-        answerC: "Above answers are correct",
+        optionA: "a. JavaScript function that runs as soon as it is defined",
+        optionB: "b. IT is a simple way to isolate variable declarations",
+        optionC: "c. Above answers are correct",
         correctAnswer: "Above answers are correct"
     },
-
     {
         question: "5. A higher order function is:",
-        answerA: "A function or functions that operate on other function or functions, either arguments or returning the functions",
-        answerB: "A function that is placed at the top of the script",
-        answerC: "Above answers are incorrect",
+        optionA: "a. A function or functions that operate on other function or functions, either arguments or returning the functions",
+        optionB: "b. A function that is placed at the top of the script",
+        optionC: "c. Above answers are incorrect",
         correctAnswer: "A function or functions that operate on other function or functions, either arguments or returning the functions"
     }
 ]
-
-var lastQ = questions.length - 1;
+var lastQuestion = questions.length - 1;
 
 // 3. Populate the questions on the screen and add listeners to the questions
-
 function populateQuestions() {
-    var quest = questions[currentQ];
-    questionItem.innerHTML = "<p>" + questions[currentQ].question + "</p>";
-    answerA.innerHTML = questions[currentQ].answerA;
-    document.getElementById("A").addEventListener("click", evaluateAnswer());
-    answerB.innerHTML = questions[currentQ].answerB;
-    document.getElementById("B").addEventListener("click", evaluateAnswer());
-    answerC.innerHTML = questions[currentQ].answerC;
-    document.getElementById("C").addEventListener("click", evaluateAnswer());
+    var quest = questions[currentQuestion];
+    questionItem.innerHTML = "<p>" + questions[currentQuestion].question + "</p>";
+    optionA.innerHTML = questions[currentQuestion].optionA;
+    document.getElementById("A").addEventListener("click", (event)=>{ 
+        var answer = event.target.value;
+        window.alert(answer);
+        evaluateAnswer(answer);
+    });
+    optionB.innerHTML = questions[currentQuestion].optionB;
+    document.getElementById("B").addEventListener("click", (event)=>{ 
+        var answer = event.target.value;
+        window.alert(answer);
+        evaluateAnswer(answer);
+    });
+    optionC.innerHTML = questions[currentQuestion].optionC;
+    document.getElementById("C").addEventListener("click", (event)=>{ 
+        var answer = event.target.value;
+        window.alert(answer);
+        evaluateAnswer(answer);
+    });
 }
 
 // 4. Starts countdown
@@ -104,61 +111,72 @@ function countdown(){
 }
 
 // 5. Evaluate user's answers
-function answer() {
-    if (document.getElementById('A').clicked == true) {
-        var answer = document.getElementById("A").value;
-        window.alert(answer);
-        console.log(answer);
-        return answer;
-    }
-
-}
-
-function evaluateAnswer() {
-    if ( answer() == questions[currentQ].correctAnswer) {
+function evaluateAnswer(answer) {
+    if ( answer == questions[currentQuestion].correctAnswer) {
         score ++;
+        // Create a p element to indicate answer result
         var response = document.createElement("p");
-        response.textContent = "Correct!";   
-    } else {
+        response.textContent = "Correct!";
+        // Calculate user score for later storage
+        userScore = (100 / questions.length) * score;
+        console.log(userScore);   
+
+        if (currentQuestion < lastQuestion) {
+        populateQuestions();
+        currentQuestion ++;
+        }                      
+    }
+    else {
+        // Create a p element to indicate answer result
         var response = document.createElement("p");
         response.textContent = "Incorrect!";
         // timer decreases by 10 seconds
         testTime = testTime - 10;
     }
-    if (currentQ < lastQ) {
+    // keep populating questions until the last question is answered
+    if (currentQuestion < lastQuestion) {
         populateQuestions();
-        currentQ++;
-        
-    } else {
-        highScores();
+        currentQuestion ++;
+        }
+    else {
+        recordInitials();
     }
 }
 
+// 6. Record initials and score
+function recordInitials() {
+    var testScore = (ev)=> {
+    // Prevent refreshing of page in form
+    ev.preventDefault();
+    // Add score and initials on each attempt
+    var recordScores = {
+            initials: document.getElementById('initials').value,
+            score: userScore
+        }
+    }
+}
 
-// 6. High Scores
+// 7. High Scores
+//Store high score
+function highScores() {
+    storeHighScore = e =>{
+        e.preventDefault();
+    };
+// Calculate score
+        var testScore =  Math.round(100*score/questions.length);
+        document.querySelector("scoreDiv").textContent = testScore;
 
-var highScores = function () {
-    // Display 'initials' section
-    document.querySelector("#initials").setAttribute("style", "display: block;")
-   
-    // calculate score
-    var testScore = Math.round(100*score/questions.length)
-    document.querySelector("#score").textContent = testScore;
-   
-
-
+// Display 'initials' section
+    document.querySelector("#initials").setAttribute("style", "display: block;");
     // instruct user to enter and submit initials
     var rankingList = document.createElement("ol");
    var scoresEl = document.createElement("li");
    localStorage.setItem(scoresEl, testScore);
- }
-
-
-
+}
 
 // 7. Time is over
 function timeOver() {
-    if (testTime == 0) {
+    if (testTime <= 0) {
         window.alert("Sorry time is over");
         highScores();
     }
@@ -172,10 +190,4 @@ function exitQuiz() {
 }
 
 startBtn.addEventListener("click", startTest);
-//start.addEventListener("click", exitQuiz);
-
-
-
-
-
-
+quitBtn.addEventListener("click", exitQuiz);
