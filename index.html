@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./assets/css/reset.css">
         <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <head>
         <title>JavaScript Assessment (Quiz)</title>
     </head>
     <body>
@@ -13,8 +17,7 @@
         <header class="topBar">
             <section id="score" class="score leftCorner">
                 View High Scores
-                <div class="scoreDiv">
-                
+                <div class="score">
                 </div>              
             </section>
             <!-- Timer section -->
@@ -46,37 +49,49 @@
                     </ul>
                 </article>
                 <button id="startBtn">Start Test</button>
-                <button id="quitBtn">Quit Test</button>
-            </section>
 
+            </section>
+<!--Java Script Assessment Section -->
             <section id="assessment" style="display: none;"> 
                 <h2> JavaScript Assessment </h2>
+<!-- Questions -->
                 <section id="questions" class="question">
-                    <h2>Answer the following question by selecting an option below</h2>
-                    <p id="questionItem"> Question </p>
+                   <p id="questionItem"> Question </p>
                 </section>
+<!-- Answers -->
                 <section class="answers">
-                    <h2>  </h2>
                     <button  id="A" class="option">A</button>
                     <button  id="B" class="option">B</button>
                     <button  id="C" class="option">C</button>
                 </section>
+
+                <section id="confirmation">
+                </section>
             </section>
-            <section id = "initials" class="initials" style="display: none;">
-    <!-- Initials Submission Section -->
-    <section id="initials" class="initials">
-        <form id=#initials>Initials
-            <input class="initials" type="text">
-            <button id="submitInitials">Submit</button>
-        </form>
-    </section>
-    <!-- Exit Test Section -->
-    <section id="exitTest" class="exitTest">
-        <article class="exit">
-            Thank you for participating, if you want to take the test, go back.
-            <button id="goBack">Back</button>
-        </article>
-    </section>
+
+<!-- Exit Test Section -->
+            <section id="endTest" class="endTest" style="display: none;">
+                <article class="done">
+                    Thank you for completing the test. Your score is: _______
+                    <p id="finalScore"></p>
+                    Enter your initials
+<!-- User inputs initials -->
+                    <section id="initials" class="initials" >
+                        <!-- Initials Submission Section -->
+                        <form class="initials">Initials
+                            <input id="initials" type="text">
+                            <button id="sendInitials">Store Initials</button>
+                        </form>
+                    </section>
+                </article>
+<!-- High Scores Section -->
+                <section id = "highScores" class="highScoresSec">
+                    <p id="listScores"></p>
+                   <button id="goBack">Back</button>
+                    <button id="clearScores">Clear High Scores</button>
+                    <button id="quitBtn">Quit Test</button>
+                </section>
+            </section>
         </main>
             <script src="./assets/js/script.js"></script>
     </body>

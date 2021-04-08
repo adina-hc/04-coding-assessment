@@ -3,37 +3,41 @@
 $question-style: purple;
 $answer-style: #844cb9;
 $container-style: #494c7d;
-$main-style: rgb(225, 224, 224);
+$main-style: #f7f7ed;
 $border-dark: #5c9a95;
 $border-light: #fffee2;
-$font-header: Monaco, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-header: 'Monaco', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-other: 'Open Sans', sans-serif;
 
 body {
-  font-family: $font-header;
+  font-family: $font-other;
 }
 
 main {
   background: $main-style;
   margin: 0.2em;
   padding: 0.2em;
+  border-radius: 20px;
+
 }
 
 .topBar {
   display: flex;
   margin: 0.2em;
   padding: 1.3em;
-  background-color: $container-style;
-  color: $border-light;
-  font-family: $font-header;
+  font-family: $font-other;
+  font-weight: bolder;
+
 
   .leftCorner {
     position: fixed;
     left: 10px;
     top: 0.5em;
+ 
   }
 
   .score {
-    background-color: $answer-style;
+    color: $question-style;
   }
 
   .rightCorner{
@@ -42,12 +46,19 @@ main {
     top: 0.5em;
   }
   .timer {
-    background-color: $border-dark;
+    color: $question-style;
+    font-weight: bold;
   
     div.counterTime {
       align-content: center;
     }
   }
+}
+
+h1 {
+  align-content: center;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .startAssessment {
@@ -66,7 +77,8 @@ main {
   span {
   font-weight: 500px;
   font-style: italic;
-  color: $answer-style;
+  font-weight: bolder;
+  color: $question-style;
   }
 
 .question {
@@ -74,25 +86,35 @@ main {
     text-align: left;
   }
   p {
-    color: $answer-style;
+    color: $question-style;
+    font-weight: bold;
   }
 }
 
-#startBtn {
-  width: 200px;
-  height: 50px;
+button {
+  width: 130px;
+  height: 25px;
+  background-color: $question-style;
+  color: $border-light;
+  border-radius: 5px;
+  border-style: groove;
 }
 
-#quitBtn {
-  width: 200px;
-  height: 50px;
+#startBtn {
+  align-content: center;
+  position: relative;
+  left: 50px;
+  top: 5px;
+
 }
 
 .option {
   display: list-item;
-  background-color: $answer-style;
+  background-color: $question-style;
   color:$border-light;
-  height: min-content;
+  border:$border-light;
+  border-style: outset;
+  height: max-content;
   width: fit-content;
 }
 

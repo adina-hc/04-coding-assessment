@@ -1,11 +1,12 @@
 body {
-  font-family: Monaco, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 main {
-  background: #e1e0e0;
+  background: #f7f7ed;
   margin: 0.2em;
   padding: 0.2em;
+  border-radius: 20px;
 }
 
 .topBar {
@@ -14,9 +15,8 @@ main {
   display: flex;
   margin: 0.2em;
   padding: 1.3em;
-  background-color: #494c7d;
-  color: #fffee2;
-  font-family: Monaco, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
 }
 
 .topBar .leftCorner {
@@ -26,7 +26,7 @@ main {
 }
 
 .topBar .score {
-  background-color: #844cb9;
+  color: purple;
 }
 
 .topBar .rightCorner {
@@ -36,12 +36,20 @@ main {
 }
 
 .topBar .timer {
-  background-color: #5c9a95;
+  color: purple;
+  font-weight: bold;
 }
 
 .topBar .timer div.counterTime {
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+h1 {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .startAssessment {
@@ -64,7 +72,8 @@ p {
 span {
   font-weight: 500px;
   font-style: italic;
-  color: #844cb9;
+  font-weight: bolder;
+  color: purple;
 }
 
 .question h2 {
@@ -72,26 +81,36 @@ span {
 }
 
 .question p {
-  color: #844cb9;
+  color: purple;
+  font-weight: bold;
+}
+
+button {
+  width: 130px;
+  height: 25px;
+  background-color: purple;
+  color: #fffee2;
+  border-radius: 5px;
+  border-style: groove;
 }
 
 #startBtn {
-  width: 200px;
-  height: 50px;
-}
-
-#quitBtn {
-  width: 200px;
-  height: 50px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  position: relative;
+  left: 50px;
+  top: 5px;
 }
 
 .option {
   display: list-item;
-  background-color: #844cb9;
+  background-color: purple;
   color: #fffee2;
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
+  border: #fffee2;
+  border-style: outset;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
