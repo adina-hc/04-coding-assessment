@@ -22,4 +22,5 @@ The following animation demonstrates an example of the application functionality
 ![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/images/04-web-apis-homework-demo.gif)
 
 [link](https://adina-hc.github.io/04-coding-assessment/)
+[link]
 

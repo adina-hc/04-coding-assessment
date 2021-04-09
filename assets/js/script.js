@@ -4,7 +4,8 @@ var timeBar = document.getElementById("timeBar");
 var progBar = document.getElementById("progBar");
 
 var startBtn = document.getElementById("startBtn");
-var quitBtn = document.getElementById("quitBtn");
+var goBackBtn = document.getElementById("goBack");
+var doneArt = document.getElementById("done");
 
 var question = document.getElementById("questions");
 var optionA = document.getElementById("A");
@@ -14,13 +15,14 @@ var optionC = document.getElementById("C");
 var startAssessment = document.querySelector("#startAssessment");
 var instructions = document.querySelector(".instructions");
 var start = document.getElementById("startTestBtn");
+var highScoresEl = document.getElementById("highScoresSec");
 
 var assessment = document.querySelector("#assessment");
 var endTest = document.querySelector("#endTest")
 
 var initials = document.getElementById("initials");
-var sendInitials = document.getElementById("sendInitials");
-var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+var initialsBtn = document.getElementById("initialsBtn");
+
 var maxListHighScores = 10;
 
 // 1. Variable declaration
@@ -105,6 +107,9 @@ function countdown(){
 }
 
 // 5. Evaluate user's answers
+
+userScore = (100 / questions.length) * testScore;    
+
 function evaluateAnswer(event) {
     console.log(event.target.textContent)
     if ( event.target.textContent == questions[currentQuestion].correctAnswer) {
@@ -113,7 +118,8 @@ function evaluateAnswer(event) {
         var resultAnswer = document.getElementById("confirmation");
         resultAnswer.textContent = "Correct!";    
         // Calculate user score for later storage
-        userScore = (100 / questions.length) * testScore;
+        userScore = (100 / questions.length) * testScore;  
+        
         console.log(userScore);                    
     }
     else {
@@ -131,21 +137,30 @@ function evaluateAnswer(event) {
     else {
         endTest.setAttribute("style", "display: block;");
         var finalScore = document.getElementById("finalScore");
-        resultAnswer.textContent = finalScore;  
+        finalScore.textContent = userScore;  
     }
 }
 
 // 6. Declare variables and store initials and score to local
 var highScoresArray = [];
 var initials = document.querySelector("#initials");
-var sendInitials = document.querySelector("sendInitials");
 
-function recordInitials() {
+initialsBtn.addEventListener("click", recordInitials());
+// adding event to button ** remove from here if it does not work
+//document.getElementById("initialsBtn").addEventListener('click', recordInitials);
+ function recordInitials() {
+    //prevent refresh 
+    function dontRefresh(event){
+    event.preventDefault();
+    }
+    //endTest.setAttribute("style", "display:none;");
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     var scoresText = initials.value + ".- " + testScore + " points " + testTime + " seconds.";
     highScoresArray.push(scoresText);
-    localStorage.setItem("highScoresArray", JSON.stringify(highScoresArray));
-    document.querySelector("#listScores").textContent = localStorage.getItem("different");
-    sendInitials.addEventListener("click", recordInitials);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    document.querySelector("#listScores").textContent = localStorage.getItem("highScores");
+    highScoresEl.setAttribute("style", "display: block;");
+    
 }
 
 
@@ -154,8 +169,13 @@ function clearStorage(){
     localStorage.clear();
 }
 
+// 8. Go back
+goBackBtn.onclick = function(){
+    startAssessment.setAttribute("style","display:block");
+    highScoresEl.setAttribute("style","display:none");
+    endTest.setAttribute("style","display:none");
+};
 
-ás 
 // 9. Exit Quiz
 function exitQuiz() {
     document.querySelector("#assessment").setAttribute("style", "display: none;")
@@ -164,6 +184,6 @@ function exitQuiz() {
 }
 
 startBtn.addEventListener("click", startTest);
-
+initialsBtn.addEventListener("click", recordInitials);
+goBackBtn.addEventListener("click", goBack);
 clearScores.addEventListener("click", clearStorage);
-quitBtn.addEventListener("click", exitQuiz);

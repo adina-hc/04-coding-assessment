@@ -71,8 +71,8 @@
 
 <!-- Exit Test Section -->
             <section id="endTest" class="endTest" style="display: none;">
-                <article class="done">
-                    Thank you for completing the test. Your score is: _______
+                <article id = "done" class="done">
+                    Thank you for completing the test. Your score is: 
                     <p id="finalScore"></p>
                     Enter your initials
 <!-- User inputs initials -->
@@ -80,16 +80,16 @@
                         <!-- Initials Submission Section -->
                         <form class="initials">Initials
                             <input id="initials" type="text">
-                            <button id="sendInitials">Store Initials</button>
+                            <button id="initialsBtn">Store Initials</button>
                         </form>
                     </section>
                 </article>
 <!-- High Scores Section -->
-                <section id = "highScores" class="highScoresSec">
+                <section id = "highScoresSec" class="highScoresSec">High Scores
                     <p id="listScores"></p>
-                   <button id="goBack">Back</button>
+                   <button id="goBack" onclick="window.history.back()">Back</button>
                     <button id="clearScores">Clear High Scores</button>
-                    <button id="quitBtn">Quit Test</button>
+
                 </section>
             </section>
         </main>
