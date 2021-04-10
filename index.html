@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,50 +13,44 @@
     <head>
         <title>JavaScript Assessment (Quiz)</title>
     </head>
+
     <body>
         <!-- Score section -->
         <header class="topBar">
-            <section id="score" class="score leftCorner">
+            <section id="scoreSec" class="score leftCorner">
                 View High Scores
-                <div class="score">
+                <div id="scoreDiv" class="score">
                 </div>              
             </section>
             <!-- Timer section -->
-            <section class="timer  rightCorner">
+            <section id="timerSection class="timer  rightCorner">
                 Timer
                 <div id="timeCounter" class="counterTime">
-                    180
-                </div>
-                <!-- Timer bar -->
-                <div id="timerBar" width="200">
-                </div>
-                <!-- progress bar -->
-                <div id="progBar" class="pgrs">
+                    120
                 </div>
             </section>
         </header>
         <!-- Assessment container that holds questions and answers -->
         <main class="test">
-            <section id="startAssessment" class="startAssessment">
+            <section id="startTestSec" class="cStartTestSec">
                 <h1> Welcome to your JavaScript Assessment</h1>
                 <article class="instructions">
                     <ul>
-                        <li>You have <span>3 minutes</span> to complete the test.</li>
-                        <li>When you select the answer it will automatically provide result and go to the next question</li>
-                        <li>For correct answers you will add points to your score</li>
-                        <li>For each incorrect answer, you will be penalized with 10 seconds from the timer.</li> 
-                        <li>When you run out of time, the test will stop</li>
+                        <li>You have <span>2 minutes</span> to complete the test.</li>
+                        <li>When selecting the answer, feedback will appear and it will automatically move to the next question.</li>
+                        <li>Answering correctly will add points to your score.</li>
+                        <li>Answering incorrectly will penalize by deducting 10 seconds from the timer.</li> 
+                        <li>When you run out of time, the test will stop.</li>
                         <p>Enjoy!</p>
                     </ul>
                 </article>
                 <button id="startBtn">Start Test</button>
-
             </section>
 <!--Java Script Assessment Section -->
-            <section id="assessment" style="display: none;"> 
+            <section id="testSec" style="display: none;"> 
                 <h2> JavaScript Assessment </h2>
 <!-- Questions -->
-                <section id="questions" class="question">
+                <section id="questionsSec" class="question">
                    <p id="questionItem"> Question </p>
                 </section>
 <!-- Answers -->
@@ -64,33 +59,36 @@
                     <button  id="B" class="option">B</button>
                     <button  id="C" class="option">C</button>
                 </section>
-
-                <section id="confirmation">
+                <section id="confirmation" class="confirmation">
                 </section>
             </section>
-
-<!-- Exit Test Section -->
-            <section id="endTest" class="endTest" style="display: none;">
-                <article id = "done" class="done">
+<!-- End Test Section -->
+            <section id="endTestSec" class="endTest" style="display: none;">
+                <article id = "doneArt" class="done">
                     Thank you for completing the test. Your score is: 
                     <p id="finalScore"></p>
-                    Enter your initials
+                </article>
 <!-- User inputs initials -->
-                    <section id="initials" class="initials" >
+                    <section id="initialsSec" class="initialsSec" >
                         <!-- Initials Submission Section -->
-                        <form class="initials">Initials
-                            <input id="initials" type="text">
-                            <button id="initialsBtn">Store Initials</button>
+                        <form class="initialsForm">Initials
+                            <label>Enter Initials: </label>
+                            <input type="text" name="name-initials" id="initials">
+                            <input id="initialsBtn" type="submit" value="Store Initials">
                         </form>
                     </section>
-                </article>
+             </section>   
 <!-- High Scores Section -->
-                <section id = "highScoresSec" class="highScoresSec">High Scores
-                    <p id="listScores"></p>
-                   <button id="goBack" onclick="window.history.back()">Back</button>
-                    <button id="clearScores">Clear High Scores</button>
-
-                </section>
+            <section id = "highScoresSec" class="highScoresSec">
+                <fieldset>
+                    <legend>High Scores
+                        <ol id="listScores">
+                            <li id="allScores"></li>
+                        </ol>
+                        <button id="goBack">Back</button>
+                        <button id="clearScores">Clear High Scores</button>
+                    </legend>
+                </fieldset>
             </section>
         </main>
             <script src="./assets/js/script.js"></script>

@@ -1,126 +1,116 @@
 // 0. Select elements
-var countTime = document.getElementById("countTime");
-var timeBar = document.getElementById("timeBar");
-var progBar = document.getElementById("progBar");
-
+var timeCounter = document.getElementById("timeCounter");
 var startBtn = document.getElementById("startBtn");
 var goBackBtn = document.getElementById("goBack");
-var doneArt = document.getElementById("done");
+var doneArt = document.getElementById("doneArt");
 
-var question = document.getElementById("questions");
-var optionA = document.getElementById("A");
-var optionB = document.getElementById("B");
-var optionC = document.getElementById("C");
-
-var startAssessment = document.querySelector("#startAssessment");
-var instructions = document.querySelector(".instructions");
+var questionsSec = document.getElementById("questionsSec");
+var optA = document.getElementById("A");
+var optB = document.getElementById("B");
+var optC = document.getElementById("C");
+var startTestSec = document.querySelector("#startTestSec");
 var start = document.getElementById("startTestBtn");
-var highScoresEl = document.getElementById("highScoresSec");
-
-var assessment = document.querySelector("#assessment");
-var endTest = document.querySelector("#endTest")
-
-var initials = document.getElementById("initials");
+var highScoresSec = document.getElementById("highScoresSec");
+var testSec = document.querySelector("#testSec");
+var endTestSec = document.querySelector("#endTestSec");
+var initialsSec = document.querySelector("#initialsSec");
+var initials = document.getElementById("initials"); //if used below remove
 var initialsBtn = document.getElementById("initialsBtn");
-
-var maxListHighScores = 10;
+var highScoresSec = document.getElementById("highScoresSec");
+var highScoresArray = [];
 
 // 1. Variable declaration
-var testScore= 0;
-var testTime = 180;
+var testScore = 0;
+var testTime = 120;
 var counter = 0;
 
 // 0. Start Test
 function startTest() {
+    highScoresSec.setAttribute("style", "display: none");
     currentQuestion = 0;
     countdown();
-    document.querySelector("#assessment").setAttribute("style", "display: block;");
-    document.querySelector("#startAssessment").setAttribute("style", "display: none;");
+    testSec.setAttribute("style", "display: block;")
+    startTestSec.setAttribute("style", "display: none;")
     populateQuestions();
 }
-
 // 2. Questions variables / array
 var currentQuestion = 0; // current question
 var questions = [
     {
         question: "1. What are the different data types present in javascript",
-        optionA: "a. var str = 'Hello'; this not is a string",
-        optionB: "b. var x = 10; cannot be a number",
-        optionC: "c. string, number, boolean",
+        optA: "a. var str = 'Hello'; this not is a string",
+        optB: "b. var x = 10; cannot be a number",
+        optC: "c. string, number, boolean",
         correctAnswer: "c. string, number, boolean"
     },
     {
         question: "2. Hoisting in javascript is?",
-        optionA: "a. JavaScript's default behavior of moving declarations to the top of the scope",
-        optionB: "b. Hoisting is the initialization of a variable",
-        optionC: "c. None of the above",
+        optA: "a. JavaScript's default behavior of moving declarations to the top of the scope",
+        optB: "b. Hoisting is the initialization of a variable",
+        optC: "c. None of the above",
         correctAnswer: "a. JavaScript's default behavior of moving declarations to the top of the scope"
     },
     {
         question: "3. What is implicit type coercion in javascript?",
-        optionA: "a. The strict equality operator === triggers implicit type coercion",
-        optionB: "b. Javascript attemps to coerce an unexpected value type to the expected type",
-        optionC: "c. Both answers are correct",
+        optA: "a. The strict equality operator === triggers implicit type coercion",
+        optB: "b. Javascript attemps to coerce an unexpected value type to the expected type",
+        optC: "c. Both answers are correct",
         correctAnswer: "b. Javascript attemps to coerce an unexpected value type to the expected type",
     },
     {
         question: "4. What is an Immediately Invoked Function Expression (IIFE)?",
-        optionA: "a. JavaScript function that runs as soon as it is defined",
-        optionB: "b. IT is a simple way to isolate variable declarations",
-        optionC: "c. Above answers are correct",
+        optA: "a. JavaScript function that runs as soon as it is defined",
+        optB: "b. It is a simple way to isolate variable declarations",
+        optC: "c. Above answers are correct",
         correctAnswer: "c. Above answers are correct"
     },
     {
         question: "5. A higher order function is:",
-        optionA: "a. A function or functions that operate on other function or functions, either arguments or returning the functions",
-        optionB: "b. A function that is placed at the top of the script",
-        optionC: "c. Above answers are incorrect",
+        optA: "a. A function or functions that operate on other function or functions, either arguments or returning the functions",
+        optB: "b. A function that is placed at the top of the script",
+        optC: "c. Above answers are incorrect",
         correctAnswer: "a. A function or functions that operate on other function or functions, either arguments or returning the functions"
     }
 ]
 var lastQuestion = questions.length - 1;
-
 // 3. Populate the questions on the screen and add listeners to the questions 
-
 function populateQuestions() {
+    highScoresSec.setAttribute("style", "display:none;");
     var quest = questions[currentQuestion];
     questionItem.innerHTML = "<p>" + questions[currentQuestion].question + "</p>";
-    optionA.innerHTML = questions[currentQuestion].optionA;
+    optA.innerHTML = questions[currentQuestion].optA;
     document.getElementById("A").addEventListener("click", evaluateAnswer);
-    optionB.innerHTML = questions[currentQuestion].optionB;
+    optB.innerHTML = questions[currentQuestion].optB;
     document.getElementById("B").addEventListener("click", evaluateAnswer);
-    optionC.innerHTML = questions[currentQuestion].optionC;
+    optC.innerHTML = questions[currentQuestion].optC;
     document.getElementById("C").addEventListener("click", evaluateAnswer);
-} 
-
+}
 // 4. Countdown for the test
-function countdown(){
-    var timerInterval = setInterval(function(){
-        testTime--; 
+function countdown() {
+    var timerInterval = setInterval(function () {
+        testTime--;
         document.querySelector("#timeCounter").textContent = testTime;
         if (testTime <= 0 || currentQuestion >= questions.length) {
             clearInterval(timerInterval)
-            assessment.setAttribute("style", "display: none;")
-            endTest.setAttribute("style", "display: block;")
+            testSec.setAttribute("style", "display: none;")
+            endTestSec.setAttribute("style", "display: block;")
         }
     }, 1000)
 }
-
 // 5. Evaluate user's answers
-
-userScore = (100 / questions.length) * testScore;    
-
+function grade() {
+    return userScore = (100 / questions.length) * testScore;
+}
 function evaluateAnswer(event) {
     console.log(event.target.textContent)
-    if ( event.target.textContent == questions[currentQuestion].correctAnswer) {
-        testScore ++;
+    if (event.target.textContent == questions[currentQuestion].correctAnswer) {
+        testScore++;
         // Create a p element to indicate answer result
         var resultAnswer = document.getElementById("confirmation");
-        resultAnswer.textContent = "Correct!";    
+        resultAnswer.textContent = "Correct!";
         // Calculate user score for later storage
-        userScore = (100 / questions.length) * testScore;  
-        
-        console.log(userScore);                    
+        grade();
+        console.log(userScore);
     }
     else {
         // Create a p element to indicate answer result
@@ -129,61 +119,83 @@ function evaluateAnswer(event) {
         // timer decreases by 10 seconds
         testTime = testTime - 10;
     }
-    // keep populating questions until the last question is answered
-    currentQuestion ++;
+    // keep populating questions
+    currentQuestion++;
     if (currentQuestion < questions.length) {
         populateQuestions();
-        }
+    }
     else {
-        endTest.setAttribute("style", "display: block;");
+        // displays the end test section
+        endTestSec.setAttribute("style", "display: block;");
+        // displays user score
         var finalScore = document.getElementById("finalScore");
-        finalScore.textContent = userScore;  
+        finalScore.textContent = userScore;
+        highScoresSec.setAttribute("style", "display: none");
     }
 }
-
 // 6. Declare variables and store initials and score to local
-var highScoresArray = [];
-var initials = document.querySelector("#initials");
-
-initialsBtn.addEventListener("click", recordInitials());
-// adding event to button ** remove from here if it does not work
-//document.getElementById("initialsBtn").addEventListener('click', recordInitials);
- function recordInitials() {
-    //prevent refresh 
-    function dontRefresh(event){
-    event.preventDefault();
+function userResult() {
+    // Parse any JSON previously stored in scoresList
+    userInitials = document.querySelector("#initials").value;
+    var scoresList = JSON.parse(localStorage.getItem("scoresList"));
+    if (scoresList == null) scoresList = [];
+    localStorage.setItem("finalScore", grade());
+    localStorage.setItem("userInitials", userInitials);
+    var user = {
+        userInitials: localStorage.getItem("userInitials"),
+        finalScore: localStorage.getItem("finalScore"),
     }
-    //endTest.setAttribute("style", "display:none;");
-    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    var scoresText = initials.value + ".- " + testScore + " points " + testTime + " seconds.";
-    highScoresArray.push(scoresText);
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-    document.querySelector("#listScores").textContent = localStorage.getItem("highScores");
-    highScoresEl.setAttribute("style", "display: block;");
-    
+    localStorage.setItem("user", JSON.stringify(user));
+    // Save allEntries back to local storage
+    scoresList.push(user);
+    localStorage.setItem("scoresList", JSON.stringify(scoresList));
+};
+var userInitials = "hola";
+// 7. Store results and initias into local storage   
+initialsBtn.onclick = function () {
+    userResult();
 }
 
+//var allScores = document.getElementById("createList");
+var entries = localStorage.getItem("scoresList");
 
-// 7. Clear high scores
-function clearStorage(){
+//Lets count how many we have back
+var retrievedObject = JSON.parse(entries);
+//Sort by score
+if (retrievedObject != null) {
+    retrievedObject.sort(function (a, b) {
+        var keyA = new Date(a.finalScore),
+            keyB = new Date(b.finalScore);
+        // Compare the 2 dates
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+        return 0;
+    });
+    // Display list of users who took the test 
+    for (let i = 0; i < retrievedObject.length; i++) {
+        // Display entries of those users
+        var listFinalScore = document.createElement("li");
+        listFinalScore.textContent = (i + 1) + ".- " + retrievedObject[i].userInitials + " -- " + retrievedObject[i].finalScore;
+        var listScores = document.querySelector("#listScores");
+        listScores.appendChild(listFinalScore); //
+        console.log(listFinalScore.context);
+    }
+}
+
+// 9. Clear high scores
+function clearStorage() {
     localStorage.clear();
+    localStorage.removeItem("highScores");
 }
+
 
 // 8. Go back
-goBackBtn.onclick = function(){
-    startAssessment.setAttribute("style","display:block");
-    highScoresEl.setAttribute("style","display:none");
-    endTest.setAttribute("style","display:none");
+goBackBtn.onclick = function () {
+    startTestSec.setAttribute("style", "display:block");
+    highScoresSec.setAttribute("style", "display:none");
+    endTestSec.setAttribute("style", "display:none");
 };
 
-// 9. Exit Quiz
-function exitQuiz() {
-    document.querySelector("#assessment").setAttribute("style", "display: none;")
-    document.querySelector("#startAssessment").setAttribute("style", "display: none;")    
-    document.querySelector("#exitTest").setAttribute("style", "display: block;")
-}
-
 startBtn.addEventListener("click", startTest);
-initialsBtn.addEventListener("click", recordInitials);
 goBackBtn.addEventListener("click", goBack);
 clearScores.addEventListener("click", clearStorage);

@@ -13,27 +13,19 @@ body {
   font-family: $font-other;
 }
 
-main {
-  background: $main-style;
-  margin: 0.2em;
-  padding: 0.2em;
-  border-radius: 20px;
-
-}
-
 .topBar {
   display: flex;
   margin: 0.2em;
   padding: 1.3em;
   font-family: $font-other;
   font-weight: bolder;
-
+  color:$question-style
+}
 
   .leftCorner {
     position: fixed;
     left: 10px;
     top: 0.5em;
- 
   }
 
   .score {
@@ -45,14 +37,21 @@ main {
     right: 10px;
     top: 0.5em;
   }
+
   .timer {
     color: $question-style;
     font-weight: bold;
   
-    div.counterTime {
+  .counterTime {
       align-content: center;
     }
   }
+
+main {
+  background: $main-style;
+  margin: 0.2em;
+  padding: 0.2em;
+  border-radius: 20px;
 }
 
 h1 {
@@ -61,7 +60,7 @@ h1 {
   font-weight: bolder;
 }
 
-.startAssessment {
+.startTestSec {
   display: block;
   margin: 0.2em;
   padding: 0.2em;
@@ -70,6 +69,11 @@ h1 {
   article {
     border-top: $container-style;
     padding: 0.1em;
+  }
+
+  li {
+    list-style-type: circle;
+
   }
   p {
     border-top: $border-dark;
@@ -91,6 +95,30 @@ h1 {
   }
 }
 
+.assessSec{
+  padding: 15px;
+  border-bottom: #5c9a95;
+  border-width: thin;
+
+  .confirmation {
+    padding: 15px;
+    height: 20px;
+    border-top: #5c9a95;
+  }
+}
+#startBtn {
+  align-content: center;
+  position: relative;
+  left: 50px;
+  top: 5px;
+
+}
+
+.answers{
+  padding: 15;
+  border-bottom: $border-dark;
+}
+
 button {
   width: 130px;
   height: 25px;
@@ -100,13 +128,7 @@ button {
   border-style: groove;
 }
 
-#startBtn {
-  align-content: center;
-  position: relative;
-  left: 50px;
-  top: 5px;
 
-}
 
 .option {
   display: list-item;
@@ -118,3 +140,12 @@ button {
   width: fit-content;
 }
 
+fieldset{
+  margin-bottom: 30px;
+}
+
+input {
+  padding: 5px;
+  height: 90
+  px;
+}
