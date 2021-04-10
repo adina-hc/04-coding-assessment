@@ -10,7 +10,7 @@ body {
   padding: 1.3em;
   font-family: "Open Sans", sans-serif;
   font-weight: bolder;
-  color: #844cb9;
+  color: purple;
 }
 
 .leftCorner {
@@ -145,5 +145,31 @@ fieldset {
 input {
   padding: 5px;
   height: 90 px;
+}
+
+.highScoresSec {
+  padding: 10px;
+  margin: 10px;
+  width: 50em;
+  height: 1000em;
+}
+
+fieldset {
+  width: 100px;
+  height: 11em;
+  background-color: #f7f7ed;
+}
+
+legend {
+  height: 1em;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+ol {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 /*# sourceMappingURL=style.css.map */

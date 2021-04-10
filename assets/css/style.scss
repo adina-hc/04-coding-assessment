@@ -128,8 +128,6 @@ button {
   border-style: groove;
 }
 
-
-
 .option {
   display: list-item;
   background-color: $question-style;
@@ -149,3 +147,30 @@ input {
   height: 90
   px;
 }
+
+.highScoresSec {
+  padding: 10px;
+  margin: 10px;
+  width: 50em;
+  height: 1000em;
+}
+  
+fieldset {
+  
+  width: 100px;
+  height: 11em;
+  background-color: $main-style;
+  }
+
+  legend {
+    height: 1em;
+    width: max-content;
+  }
+    ol{
+      height: max-content;
+
+    }
+  
+
+
+
