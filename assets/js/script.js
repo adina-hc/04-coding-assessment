@@ -154,6 +154,8 @@ var userInitials = "hola";
 // 7. Store results and initias into local storage   
 initialsBtn.onclick = function () {
     userResult();
+    console.log("user result " + finalScore)
+
 }
 
 //var allScores = document.getElementById("createList");
@@ -177,25 +179,37 @@ if (retrievedObject != null) {
         var listFinalScore = document.createElement("li");
         listFinalScore.textContent = (i + 1) + ".- " + retrievedObject[i].userInitials + " -- " + retrievedObject[i].finalScore;
         var listScores = document.querySelector("#listScores");
-        listScores.appendChild(listFinalScore); //
-        console.log(listFinalScore.context);
+        listScores.appendChild(listFinalScore); 
+        //console.log(listFinalScore.context); // remove when done
     }
 }
 
 // 9. Clear high scores
+clearScores.onclick = function() {
+    localStorage.clear();
+}
+/*
 function clearStorage() {
     localStorage.clear();
-    localStorage.removeItem("highScores");
+    //listScores.removeItem("highScores");
 }
-
+*/
 
 // 8. Go back
-goBackBtn.onclick = function () {
+goBackBtn.onclick = function (event) {
+    event.preventDefault;
     startTestSec.setAttribute("style", "display:block");
     highScoresSec.setAttribute("style", "display:none");
     endTestSec.setAttribute("style", "display:none");
 };
 
+// View High Scores from the Header
+function viewHS () {
+    
+}
+
 startBtn.addEventListener("click", startTest);
-goBackBtn.addEventListener("click", goBack);
-clearScores.addEventListener("click", clearStorage);
+//goBackBtn.addEventListener("click", goBack);
+
+
+//clearScores.addEventListener("click", function (){localStorage.clear()});
