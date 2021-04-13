@@ -33,12 +33,13 @@ body {
   }
 
   .rightCorner{
-    position: fixed;
+    position: absolute;
     right: 10px;
     top: 0.5em;
   }
 
   .timer {
+    display: inline-block;
     color: $question-style;
     font-weight: bold;
   
@@ -46,6 +47,12 @@ body {
       align-content: center;
     }
   }
+
+  .viewHSBtn {
+    background-color: none;
+    color: $answer-style;
+  }
+
 
 main {
   background: $main-style;
@@ -149,6 +156,7 @@ input {
 }
 
 .highScoresSec {
+  
   padding: 10px;
   margin: 10px;
   width: 50em;

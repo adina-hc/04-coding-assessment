@@ -151,14 +151,15 @@ function userResult() {
     localStorage.setItem("scoresList", JSON.stringify(scoresList));
 };
 var userInitials = "hola";
-// 7. Store results and initias into local storage   
+// 7. Store results and initias into local storage 
 initialsBtn.onclick = function () {
-    userResult();
+    highScoresSec.setAttribute("style", "visibility:visible");  
+    startTestSec.setAttribute("style", "display:none");   
     console.log("user result " + finalScore)
-
+    endTestSec.setAttribute("style", "display:none");
+    userResult();
 }
 
-//var allScores = document.getElementById("createList");
 var entries = localStorage.getItem("scoresList");
 
 //Lets count how many we have back
@@ -187,6 +188,7 @@ if (retrievedObject != null) {
 // 9. Clear high scores
 clearScores.onclick = function() {
     localStorage.clear();
+    location.reload();
 }
 /*
 function clearStorage() {
@@ -204,8 +206,11 @@ goBackBtn.onclick = function (event) {
 };
 
 // View High Scores from the Header
-function viewHS () {
-    
+var viewHSEl = document.querySelector("#viewHSSecBtn");
+viewHSEl.onclick = function viewHS () {
+    startTestSec.setAttribute("style", "display:none");
+    highScoresSec.setAttribute("style", "display:block");
+    endTestSec.setAttribute("style", "display:none");
 }
 
 startBtn.addEventListener("click", startTest);

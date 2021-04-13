@@ -24,12 +24,13 @@ body {
 }
 
 .rightCorner {
-  position: fixed;
+  position: absolute;
   right: 10px;
   top: 0.5em;
 }
 
 .timer {
+  display: inline-block;
   color: purple;
   font-weight: bold;
 }
@@ -37,6 +38,11 @@ body {
 .timer .counterTime {
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+.viewHSBtn {
+  background-color: none;
+  color: #844cb9;
 }
 
 main {

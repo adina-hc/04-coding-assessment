@@ -18,12 +18,13 @@
         <!-- Score section -->
         <header class="topBar">
             <section id="scoreSec" class="score leftCorner">
-                View High Scores
+                <button id="viewHSSecBtn" class="viewHSBtn">View High Scores</button>
+                
                 <div id="scoreDiv" class="score">
                 </div>              
             </section>
             <!-- Timer section -->
-            <section id="timerSection class="timer  rightCorner">
+            <section id="timerSection" class="timer  rightCorner">
                 Timer
                 <div id="timeCounter" class="counterTime">
                     120
@@ -32,7 +33,7 @@
         </header>
         <!-- Assessment container that holds questions and answers -->
         <main class="test">
-            <section id="startTestSec" class="cStartTestSec">
+            <section id="startTestSec" class="cStartTestSec" style="display: block;">
                 <h1> Welcome to your JavaScript Assessment</h1>
                 <article class="instructions">
                     <ul>
@@ -77,18 +78,18 @@
                             <input id="initialsBtn" type="submit" value="Store Initials">
                         </form>
                     </section>
-             </section>   
+            </section>   
 <!-- High Scores Section -->
             <section id = "highScoresSec" class="highScoresSec">
                 <fieldset>
                     <legend>High Scores
-                        <ol id="listScores">
-                           
-                        </ol>
+                        <ol id="listScores">                          
+                        </ol>  
                         <button id="goBack">Back</button>
                         <button id="clearScores">Clear High Scores</button>
                     </legend>
                 </fieldset>
+
             </section>
         </main>
             <script src="./assets/js/script.js"></script>
