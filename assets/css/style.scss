@@ -48,9 +48,10 @@ body {
     }
   }
 
-  .viewHSBtn {
-    background-color: none;
-    color: $answer-style;
+#viewHSSecBtn {
+    background-color: transparent;
+    color: $question-style;
+    border: none;
   }
 
 
@@ -134,6 +135,14 @@ button {
   border-radius: 5px;
   border-style: groove;
 }
+
+#viewHSSecBtn {
+    background-color: transparent;
+    color: $question-style;
+    border: none;
+    font-family: "Open Sans", sans-serif;
+
+  }
 
 .option {
   display: list-item;

@@ -153,9 +153,9 @@ function userResult() {
 var userInitials = "hola";
 // 7. Store results and initias into local storage 
 initialsBtn.onclick = function () {
-    highScoresSec.setAttribute("style", "visibility:visible");  
+    highScoresSec.setAttribute("style", "display:block");  
     startTestSec.setAttribute("style", "display:none");   
-    console.log("user result " + finalScore)
+    console.log("user result" + finalScore)
     endTestSec.setAttribute("style", "display:none");
     userResult();
 }
@@ -178,7 +178,7 @@ if (retrievedObject != null) {
     for (let i = 0; i < retrievedObject.length; i++) {
         // Display entries of those users
         var listFinalScore = document.createElement("li");
-        listFinalScore.textContent = (i + 1) + ".- " + retrievedObject[i].userInitials + " -- " + retrievedObject[i].finalScore;
+        listFinalScore.textContent = (i + 1) + ". " + retrievedObject[i].userInitials + " -> " + retrievedObject[i].finalScore;
         var listScores = document.querySelector("#listScores");
         listScores.appendChild(listFinalScore); 
         //console.log(listFinalScore.context); // remove when done
@@ -186,16 +186,12 @@ if (retrievedObject != null) {
 }
 
 // 9. Clear high scores
-clearScores.onclick = function() {
+clearScores.onclick = function(event) {
+    event.preventDefault;
     localStorage.clear();
     location.reload();
 }
-/*
-function clearStorage() {
-    localStorage.clear();
-    //listScores.removeItem("highScores");
-}
-*/
+
 
 // 8. Go back
 goBackBtn.onclick = function (event) {
@@ -217,4 +213,3 @@ startBtn.addEventListener("click", startTest);
 //goBackBtn.addEventListener("click", goBack);
 
 
-//clearScores.addEventListener("click", function (){localStorage.clear()});

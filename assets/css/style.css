@@ -40,9 +40,10 @@ body {
       align-content: center;
 }
 
-.viewHSBtn {
-  background-color: none;
-  color: #844cb9;
+#viewHSSecBtn {
+  background-color: transparent;
+  color: purple;
+  border: none;
 }
 
 main {
@@ -128,6 +129,13 @@ button {
   color: #fffee2;
   border-radius: 5px;
   border-style: groove;
+}
+
+#viewHSSecBtn {
+  background-color: transparent;
+  color: purple;
+  border: none;
+  font-family: "Open Sans", sans-serif;
 }
 
 .option {
