@@ -152,7 +152,8 @@ function userResult() {
 };
 var userInitials = "hola";
 // 7. Store results and initias into local storage 
-initialsBtn.onclick = function () {
+initialsBtn.onclick = function (e) { //--> this was missing for the initial display of score
+    e.preventDefault();
     highScoresSec.setAttribute("style", "display:block");  
     startTestSec.setAttribute("style", "display:none");   
     console.log("user result" + finalScore)
