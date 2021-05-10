@@ -21,7 +21,7 @@ var highScoresArray = [];
 
 // 1. Variable declaration
 var testScore = 0;
-var testTime = 120;
+var testTime = 90;
 var counter = 0;
 
 // 0. Start Test
