@@ -186,7 +186,7 @@ if (retrievedObject != null) {
     }
 }
 
-// 9. Clear high scores
+// 8. Clear high scores
 clearScores.onclick = function(event) {
     event.preventDefault;
     localStorage.clear();
@@ -194,7 +194,7 @@ clearScores.onclick = function(event) {
 }
 
 
-// 8. Go back
+// 9. Go back
 goBackBtn.onclick = function (event) {
     event.preventDefault;
     startTestSec.setAttribute("style", "display:block");
@@ -202,7 +202,7 @@ goBackBtn.onclick = function (event) {
     endTestSec.setAttribute("style", "display:none");
 };
 
-// View High Scores from the Header
+// 10. View High Scores from the Header
 var viewHSEl = document.querySelector("#viewHSSecBtn");
 viewHSEl.onclick = function viewHS () {
     startTestSec.setAttribute("style", "display:none");
