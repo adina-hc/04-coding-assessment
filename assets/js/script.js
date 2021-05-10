@@ -152,7 +152,7 @@ function userResult() {
 };
 var userInitials = "hola";
 // 7. Store results and initias into local storage 
-initialsBtn.onclick = function (e) { //--> this was missing for the initial display of score
+initialsBtn.onclick = function (e) {
     e.preventDefault();
     highScoresSec.setAttribute("style", "display:block");  
     startTestSec.setAttribute("style", "display:none");   
@@ -182,7 +182,7 @@ if (retrievedObject != null) {
         listFinalScore.textContent = (i + 1) + ". " + retrievedObject[i].userInitials + " -> " + retrievedObject[i].finalScore;
         var listScores = document.querySelector("#listScores");
         listScores.appendChild(listFinalScore); 
-        console.log(listFinalScore.context); // remove when done
+        console.log(listFinalScore); // remove when done
     }
 }
 
