@@ -210,6 +210,7 @@ viewHSEl.onclick = function viewHS () {
     endTestSec.setAttribute("style", "display:none");
 }
 
+// Event listeners
 startBtn.addEventListener("click", startTest);
 
 
