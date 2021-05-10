@@ -29,8 +29,8 @@ function startTest() {
     highScoresSec.setAttribute("style", "display: none");
     currentQuestion = 0;
     countdown();
-    testSec.setAttribute("style", "display: block;")
-    startTestSec.setAttribute("style", "display: none;")
+    testSec.setAttribute("style", "display: block;");
+    startTestSec.setAttribute("style", "display: none;");
     populateQuestions();
 }
 // 2. Questions variables / array
@@ -89,8 +89,8 @@ function populateQuestions() {
 function countdown() {
     var timerInterval = setInterval(function () {
         testTime--;
-        document.querySelector("#timeCounter").textContent = testTime;
-        if (testTime <= 0 || currentQuestion >= questions.length) {
+        timeCounter.textContent = testTime; //replace query selector by the variable timecounter
+        if (testTime < 0 || currentQuestion >= questions.length) {
             clearInterval(timerInterval)
             testSec.setAttribute("style", "display: none;")
             endTestSec.setAttribute("style", "display: block;")
@@ -182,7 +182,7 @@ if (retrievedObject != null) {
         listFinalScore.textContent = (i + 1) + ". " + retrievedObject[i].userInitials + " -> " + retrievedObject[i].finalScore;
         var listScores = document.querySelector("#listScores");
         listScores.appendChild(listFinalScore); 
-        //console.log(listFinalScore.context); // remove when done
+        console.log(listFinalScore.context); // remove when done
     }
 }
 
