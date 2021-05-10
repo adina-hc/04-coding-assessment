@@ -165,7 +165,7 @@ var entries = localStorage.getItem("scoresList");
 
 // Retrieve entries by user
 var retrievedObject = JSON.parse(entries);
-//Sort by score
+// Sort by score
 if (retrievedObject != null) {
     retrievedObject.sort(function (a, b) {
         var keyA = new Date(a.finalScore),
@@ -180,9 +180,10 @@ if (retrievedObject != null) {
         // Display entries of those users
         var listFinalScore = document.createElement("li");
         listFinalScore.textContent = (i + 1) + ". " + retrievedObject[i].userInitials + " -> " + retrievedObject[i].finalScore;
+        // Create and append the element
         var listScores = document.querySelector("#listScores");
         listScores.appendChild(listFinalScore); 
-        console.log(listFinalScore); // remove when done
+        console.log(listFinalScore);
     }
 }
 
