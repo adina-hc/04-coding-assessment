@@ -193,7 +193,6 @@ clearScores.onclick = function(event) {
     location.reload();
 }
 
-
 // 9. Go back
 goBackBtn.onclick = function (event) {
     event.preventDefault;
@@ -212,6 +211,3 @@ viewHSEl.onclick = function viewHS () {
 
 // Event listeners
 startBtn.addEventListener("click", startTest);
-
-
-
