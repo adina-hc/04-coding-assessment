@@ -90,7 +90,7 @@ function countdown() {
     var timerInterval = setInterval(function () {
         testTime--;
         timeCounter.textContent = testTime; //replace query selector by the variable timecounter
-        if (testTime < 0 || currentQuestion >= questions.length) {
+        if (testTime <= 0 || currentQuestion >= questions.length) {
             clearInterval(timerInterval)
             testSec.setAttribute("style", "display: none;")
             endTestSec.setAttribute("style", "display: block;")
