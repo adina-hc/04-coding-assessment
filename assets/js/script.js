@@ -211,6 +211,6 @@ viewHSEl.onclick = function viewHS () {
 }
 
 startBtn.addEventListener("click", startTest);
-//goBackBtn.addEventListener("click", goBack);
+
 
 
