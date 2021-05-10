@@ -171,8 +171,8 @@ if (retrievedObject != null) {
         var keyA = new Date(a.finalScore),
             keyB = new Date(b.finalScore);
         // Compare the 2 dates
-        if (keyA < keyB) return 1;
-        if (keyA > keyB) return -1;
+        if (keyA > keyB) return 1;
+        if (keyA < keyB) return -1;
         return 0;
     });
     // Display list of users who took the test 
