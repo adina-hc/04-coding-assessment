@@ -163,7 +163,7 @@ initialsBtn.onclick = function (e) {
 
 var entries = localStorage.getItem("scoresList");
 
-//Lets count how many we have back
+// Retrieve entries by user
 var retrievedObject = JSON.parse(entries);
 //Sort by score
 if (retrievedObject != null) {
